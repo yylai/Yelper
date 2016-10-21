@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Wb7-cC-z37">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Business View Controller-->
+        <!--Yelper-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BusinessViewController" customModule="Yelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,10 +23,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="151" id="6gw-cQ-lEp" customClass="BusinessCell" customModule="Yelper" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="151"/>
+                                        <rect key="frame" x="0.0" y="92" width="343" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gw-cQ-lEp" id="v2A-l4-dEh">
-                                            <frame key="frameInset" width="343" height="150"/>
+                                            <frame key="frameInset" width="343" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9AI-RC-htW">
@@ -121,11 +121,30 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Enq-Ia-9fx" secondAttribute="bottom" id="yuS-Vi-u1u"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Yelper" id="g9R-MG-lDg"/>
                     <connections>
                         <outlet property="businessTableView" destination="Enq-Ia-9fx" id="3pv-dg-ZMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="602.5" y="40.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QZ7-1y-QnZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wb7-cC-z37" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Khq-bR-e4O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="oFX-5t-TwR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ALL-7e-Oqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="15.5" y="40.5"/>
         </scene>
