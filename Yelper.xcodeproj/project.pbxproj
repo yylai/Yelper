@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30650AB1DB9E0810017F88E /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30650AA1DB9E0810017F88E /* BusinessCell.swift */; };
+		A31F10901DB8A547007E833F /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31F108F1DB8A547007E833F /* YelpClient.swift */; };
+		A31F10921DB8A577007E833F /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31F10911DB8A577007E833F /* Business.swift */; };
 		A371F8EF1DB8A38100EE31D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371F8EE1DB8A38100EE31D6 /* AppDelegate.swift */; };
-		A371F8F11DB8A38100EE31D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371F8F01DB8A38100EE31D6 /* ViewController.swift */; };
+		A371F8F11DB8A38100EE31D6 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371F8F01DB8A38100EE31D6 /* BusinessViewController.swift */; };
 		A371F8F41DB8A38100EE31D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A371F8F21DB8A38100EE31D6 /* Main.storyboard */; };
 		A371F8F61DB8A38100EE31D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A371F8F51DB8A38100EE31D6 /* Assets.xcassets */; };
 		A371F8F91DB8A38100EE31D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A371F8F71DB8A38100EE31D6 /* LaunchScreen.storyboard */; };
+		C1B164AF011BFF752ECE115D /* Pods_Yelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1646AE18C3A802D8A3DE653 /* Pods_Yelper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6681DFF9C7EEFFCFE70D74C9 /* Pods-Yelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yelper/Pods-Yelper.debug.xcconfig"; sourceTree = "<group>"; };
+		8162E51F15ECD1FDD801FAB1 /* Pods-Yelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yelper/Pods-Yelper.release.xcconfig"; sourceTree = "<group>"; };
+		A30650AA1DB9E0810017F88E /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
+		A31F108F1DB8A547007E833F /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		A31F10911DB8A577007E833F /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		A371F8EB1DB8A38100EE31D6 /* Yelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A371F8EE1DB8A38100EE31D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A371F8F01DB8A38100EE31D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A371F8F01DB8A38100EE31D6 /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		A371F8F31DB8A38100EE31D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A371F8F51DB8A38100EE31D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A371F8F81DB8A38100EE31D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A371F8FA1DB8A38100EE31D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1646AE18C3A802D8A3DE653 /* Pods_Yelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B164AF011BFF752ECE115D /* Pods_Yelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44969908A3AE1C4AF8883354 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6681DFF9C7EEFFCFE70D74C9 /* Pods-Yelper.debug.xcconfig */,
+				8162E51F15ECD1FDD801FAB1 /* Pods-Yelper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		920C550024483C412163454A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1646AE18C3A802D8A3DE653 /* Pods_Yelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A371F8E21DB8A38100EE31D6 = {
 			isa = PBXGroup;
 			children = (
 				A371F8ED1DB8A38100EE31D6 /* Yelper */,
 				A371F8EC1DB8A38100EE31D6 /* Products */,
+				44969908A3AE1C4AF8883354 /* Pods */,
+				920C550024483C412163454A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,11 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				A371F8EE1DB8A38100EE31D6 /* AppDelegate.swift */,
-				A371F8F01DB8A38100EE31D6 /* ViewController.swift */,
+				A371F8F01DB8A38100EE31D6 /* BusinessViewController.swift */,
 				A371F8F21DB8A38100EE31D6 /* Main.storyboard */,
 				A371F8F51DB8A38100EE31D6 /* Assets.xcassets */,
 				A371F8F71DB8A38100EE31D6 /* LaunchScreen.storyboard */,
 				A371F8FA1DB8A38100EE31D6 /* Info.plist */,
+				A31F108F1DB8A547007E833F /* YelpClient.swift */,
+				A31F10911DB8A577007E833F /* Business.swift */,
+				A30650AA1DB9E0810017F88E /* BusinessCell.swift */,
 			);
 			path = Yelper;
 			sourceTree = "<group>";
@@ -71,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A371F8FD1DB8A38100EE31D6 /* Build configuration list for PBXNativeTarget "Yelper" */;
 			buildPhases = (
+				86C94D336FB515879DD466C6 /* [CP] Check Pods Manifest.lock */,
 				A371F8E71DB8A38100EE31D6 /* Sources */,
 				A371F8E81DB8A38100EE31D6 /* Frameworks */,
 				A371F8E91DB8A38100EE31D6 /* Resources */,
+				11F8FC206D8281527993D8E2 /* [CP] Embed Pods Frameworks */,
+				5004B77A5537F276CF79FF17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +167,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11F8FC206D8281527993D8E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yelper/Pods-Yelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5004B77A5537F276CF79FF17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Yelper/Pods-Yelper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86C94D336FB515879DD466C6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A371F8E71DB8A38100EE31D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A371F8F11DB8A38100EE31D6 /* ViewController.swift in Sources */,
+				A30650AB1DB9E0810017F88E /* BusinessCell.swift in Sources */,
+				A371F8F11DB8A38100EE31D6 /* BusinessViewController.swift in Sources */,
+				A31F10921DB8A577007E833F /* Business.swift in Sources */,
+				A31F10901DB8A547007E833F /* YelpClient.swift in Sources */,
 				A371F8EF1DB8A38100EE31D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,6 +345,7 @@
 		};
 		A371F8FE1DB8A38100EE31D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6681DFF9C7EEFFCFE70D74C9 /* Pods-Yelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Yelper/Info.plist;
@@ -270,6 +358,7 @@
 		};
 		A371F8FF1DB8A38100EE31D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8162E51F15ECD1FDD801FAB1 /* Pods-Yelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Yelper/Info.plist;
@@ -299,6 +388,7 @@
 				A371F8FF1DB8A38100EE31D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
