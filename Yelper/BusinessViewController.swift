@@ -20,16 +20,21 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
-            self.businesses = businesses
-//            if let businesses = businesses {
-//                for business in businesses {
-//                    print(business.name!)
-//                    print(business.address!)
-//                }
-//            }
+            if let searchedBusinesses = businesses {
+                self.businesses = [Business]()
+                
+                for business in searchedBusinesses {
+                    print(business.name!)
+                    print(business.address!)
+                    self.businesses.append(business)
+                }
+            }
             
+            //setupSearchBar()
             self.businessTableView.reloadData()
             
             }
@@ -39,8 +44,6 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         businessTableView.delegate = self
         businessTableView.rowHeight = UITableViewAutomaticDimension
         businessTableView.estimatedRowHeight = 120
-        
-        setupSearchBar()
         
         /* Example of Yelp search with more search options specified
          Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
@@ -64,40 +67,21 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        
-//        if searchText == "" {
-//            filteredMovies = movies!
-//        } else {
-//            filteredMovies = movies!.filter({ (movie) -> Bool in
-//                let currentTitle = movie["title"] as! String
-//                let range = currentTitle.range(of: searchText, options: .caseInsensitive)
-//                return range != nil
-//            })
-//        }
-//        
-//        self.movieTableView.reloadData()
+
     }
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        isSearching = true
+
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.text = nil
-        searchBar.setShowsCancelButton(false, animated: true)
-//        isSearching = false
-//        // Remove focus from the search bar.
-  searchBar.endEditing(true)
     }
     
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        isSearching = true
-        searchBar.setShowsCancelButton(true, animated: true)
     }
     
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        self.movieTableView.reloadData()
+
     }
     
     
