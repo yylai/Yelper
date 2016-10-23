@@ -17,11 +17,17 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var filterTableView: UITableView!
     
+    let filterSectionTitle = ["Deals", "Distance", "Sort By", "Categories"]
+    let filterSectionLabelsForRow:[[String]] = [["Offering a deal"], ["Auto", "0.3", "1", "5", "20"], ["Best Match", "Distance", "Highest Rated"], ["Japanese", "Korean", "Seafood", "NewAmerican"]]
+    
+    //default filter state
+    let filterState = Filters(hasDeal: false, distance: Filters.eDistance.Auto, sortBy: Filters.eSortBy.HighestRated, categories: [Filters.eCategory.japanese])
+    
     weak var delegate: FiltersViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         filterTableView.delegate = self
         filterTableView.dataSource = self
@@ -44,9 +50,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSearchButton(_ sender: AnyObject) {
         
         dismiss(animated: true, completion: nil)
-        let fil = Filters(hasDeal: true, distance: .Five, sortBy: .BestMatch, categories: [.Japanese, .Korean])
-        
-        delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: fil)
+        delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filterState)
     }
     
     
@@ -59,47 +63,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return filterSectionTitle.count
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            //deal
-            return "Deals"
-        case 1:
-            //distance
-            return "Distance"
-        case 2:
-            //sortby
-            return "Sort By"
-        case 3:
-            //category
-            return "Categories"
-        default:
-            return nil
-        }
+        return filterSectionTitle[section]
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            //deal
-            return 1
-        case 1:
-            //distance
-            return 5
-        case 2:
-            //sortby
-            return 3
-        case 3:
-            //category
-            return 4
-        default:
-            return 0
-        }
-        
+       return filterSectionLabelsForRow[section].count
     }
     
     
@@ -109,31 +81,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.delegate = self
         
-        switch indexPath.section {
-        case 0:
-            //deal
-            return cell
-        case 1:
-            //distance
-            return cell
-        case 2:
-            //sortby
-            return cell
-        case 3:
-            //category
-            return cell
-        default:
-            return cell
-        }
+        setFilterLabels(cell: cell, section: indexPath.section, row: indexPath.row)
         
+        return cell
     }
     
-
+    func setFilterLabels(cell: SwitchCell, section: Int, row: Int) {
+        cell.filterLabel.text = filterSectionLabelsForRow[section][row]
+    }
     
-    
-    
-    
-
     /*
     // MARK: - Navigation
 

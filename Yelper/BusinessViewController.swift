@@ -22,7 +22,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
+        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             if let searchedBusinesses = businesses {
                 self.businesses = [Business]()
@@ -45,16 +45,6 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         businessTableView.rowHeight = UITableViewAutomaticDimension
         businessTableView.estimatedRowHeight = 120
         
-        /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-         self.businesses = businesses
-         
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
-         */
     }
     
     func setupSearchBar() {
@@ -83,7 +73,6 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
 
     }
-    
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,9 +106,22 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: Filters) {
-        print("filtered!")
         
-        //Business.searchWithTerm(term: <#T##String#>, sort: <#T##YelpSortMode?#>, categories: <#T##[String]?#>, deals: <#T##Bool?#>, completion: //<#T##([Business]?, Error?) -> Void#>)
+        Business.searchWithTerm(term: "Restaurants", filter: filters) { (businesses: [Business]?, error: Error?) in
+                        if let searchedBusinesses = businesses {
+                            self.businesses = [Business]()
+            
+                            for business in searchedBusinesses {
+                                print(business.name!)
+                                print(business.address!)
+                                self.businesses.append(business)
+                            }
+                        }
+            
+                        //setupSearchBar()
+                        self.businessTableView.reloadData()
+            
+        }
     }
 
 

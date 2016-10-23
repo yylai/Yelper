@@ -9,35 +9,34 @@
 import Foundation
 
 @objc class Filters: NSObject {
-    enum eDistance {
-        case Auto
-        case Point3
-        case One
-        case Five
-        case Twenty
+    enum eDistance:Int {
+        case Auto = 0
+        case Point3Mile = 483
+        case OneMile = 1609
+        case FiveMiles = 8047
+        case TwentyMiles = 32187
     }
     
-    enum eSortBy {
-        case BestMatch
+    enum eSortBy:Int {
+        case BestMatch = 0
         case Distance
         case HighestRated
     }
     
-    enum eCategory {
-        case Japanese
-        case Korean
-        case Seafood
-        case NewAmerican
-        //["name" : "American, New", "code": "newamerican"],
+    enum eCategory:String {
+        case japanese
+        case korean
+        case seafood
+        case newamerican
     }
 
     
-    let hasDeal: Bool?
-    let distance: eDistance?
-    let sortBy: eSortBy?
-    let categories: [eCategory]?
+    var hasDeal: Bool?
+    var distance: eDistance?
+    var sortBy: eSortBy?
+    var categories: [eCategory]?
     
-    init(hasDeal: Bool, distance: eDistance, sortBy: eSortBy, categories: [eCategory]) {
+    init(hasDeal: Bool?, distance: eDistance?, sortBy: eSortBy?, categories: [eCategory]?) {
         self.hasDeal = hasDeal
         self.distance = distance
         self.sortBy = sortBy
