@@ -18,10 +18,16 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var filterTableView: UITableView!
     
     let filterSectionTitle = ["Deals", "Distance", "Sort By", "Categories"]
-    let filterSectionLabelsForRow:[[String]] = [["Offering a deal"], ["Auto", "0.3", "1", "5", "20"], ["Best Match", "Distance", "Highest Rated"], ["Japanese", "Korean", "Seafood", "NewAmerican"]]
+    let filterSectionLabelsForRow:[[String]] = [["Offering a deal"], ["Auto", "0.3 miles", "1 mile", "5 miles", "20 miles"], ["Best Match", "Distance", "Highest Rated"], ["Japanese", "Korean", "Seafood", "NewAmerican"]]
     
-    //default filter state
-    let filterState = Filters(hasDeal: false, distance: Filters.eDistance.Auto, sortBy: Filters.eSortBy.HighestRated, categories: [Filters.eCategory.japanese])
+    let distanceLookup = [Filters.eDistance.Auto, Filters.eDistance.Point3Mile, Filters.eDistance.OneMile, Filters.eDistance.FiveMiles, Filters.eDistance.TwentyMiles]
+    let sortLookup = [Filters.eSortBy.BestMatch, Filters.eSortBy.Distance, Filters.eSortBy.HighestRated]
+    let categoryLookup = [Filters.eCategory.japanese, Filters.eCategory.korean, Filters.eCategory.seafood, Filters.eCategory.newamerican]
+    
+    var hasDealState: Bool = false
+    var sortedByState: [Filters.eSortBy: Bool] = [Filters.eSortBy.BestMatch: true, Filters.eSortBy.HighestRated: false, Filters.eSortBy.Distance: false]
+    var distanceState: [Filters.eDistance: Bool] = [Filters.eDistance.Auto: true, Filters.eDistance.Point3Mile: false, Filters.eDistance.OneMile: false, Filters.eDistance.FiveMiles: false, Filters.eDistance.TwentyMiles: false]
+    var categoryState: [Filters.eCategory: Bool] = [Filters.eCategory.japanese: false, Filters.eCategory.korean: false, Filters.eCategory.newamerican: false, Filters.eCategory.seafood: false]
     
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -50,6 +56,25 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func onSearchButton(_ sender: AnyObject) {
         
         dismiss(animated: true, completion: nil)
+        
+        
+        let distance = distanceState.first { (key, value) -> Bool in
+            return value
+        }?.key
+        
+        let sortedBy = sortedByState.first { (key, value) -> Bool in
+            return value
+        }?.key
+        
+        let categories = categoryState.filter { (key, value) -> Bool in
+            return value
+        }.map { (key, value) -> Filters.eCategory in
+            return key
+        }
+        
+        let filterState = Filters(hasDeal: false, distance: distance, sortBy: sortedBy, categories: categories)
+        
+        
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filterState)
     }
     
@@ -57,8 +82,49 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func switchCell(switchCell: SwitchCell, didChangeValue: Bool) {
         
         let path = filterTableView.indexPath(for: switchCell)!
+        let isOn = switchCell.filterSwitch.isOn
+        switch path.section {
+        case 0:
+            setHasDealState(newValue: isOn)
+        case 1:
+            setDistanceState(distance: distanceLookup[path.row], newValue: isOn)
+        case 2:
+            setSortByState(sortBy: sortLookup[path.row], newValue: isOn)
+        case 3:
+            setCategoryState(category: categoryLookup[path.row], newValue: isOn)
+        default:
+            break
+        }
         
-        print("switch cell click section \(path.section) row \(path.row)")
+        filterTableView.reloadData()
+        
+        //print("switch cell click section \(path.section) row \(path.row)")
+    }
+    
+    func setDistanceState(distance: Filters.eDistance, newValue: Bool) {
+        //reset all
+        distanceState.forEach { (key, value) in
+            distanceState[key] = false
+        }
+        
+        distanceState[distance] = newValue
+    }
+    
+    func setCategoryState(category: Filters.eCategory, newValue: Bool) {
+        categoryState[category] = newValue
+    }
+    
+    func setSortByState(sortBy: Filters.eSortBy, newValue: Bool) {
+        //reset all
+        sortedByState.forEach { (key, value) in
+            sortedByState[key] = false
+        }
+        
+        sortedByState[sortBy] = newValue
+    }
+    
+    func setHasDealState(newValue: Bool) {
+        hasDealState = newValue
     }
     
     
@@ -82,6 +148,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.delegate = self
         
         setFilterLabels(cell: cell, section: indexPath.section, row: indexPath.row)
+        setFilterValue(cell: cell, section: indexPath.section, row: indexPath.row)
         
         return cell
     }
@@ -90,14 +157,20 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.filterLabel.text = filterSectionLabelsForRow[section][row]
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setFilterValue(cell: SwitchCell, section: Int, row: Int) {
+        switch section {
+        case 0:
+            //setHasDealState(newValue: isOn)
+            cell.filterSwitch.isOn = hasDealState
+        case 1:
+            cell.filterSwitch.isOn = distanceState[distanceLookup[row]]!
+        case 2:
+            cell.filterSwitch.isOn = sortedByState[sortLookup[row]]!
+        case 3:
+            cell.filterSwitch.isOn = categoryState[categoryLookup[row]]!
+        default:
+            break
+        }
     }
-    */
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
     
@@ -21,7 +22,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             if let searchedBusinesses = businesses {
@@ -36,7 +37,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
             
             //setupSearchBar()
             self.businessTableView.reloadData()
-            
+            MBProgressHUD.hide(for: self.view, animated: true)
             }
         )
         
@@ -107,6 +108,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: Filters) {
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         Business.searchWithTerm(term: "Restaurants", filter: filters) { (businesses: [Business]?, error: Error?) in
                         if let searchedBusinesses = businesses {
                             self.businesses = [Business]()
@@ -120,6 +122,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
             
                         //setupSearchBar()
                         self.businessTableView.reloadData()
+                        MBProgressHUD.hide(for: self.view, animated: true)
             
         }
     }
