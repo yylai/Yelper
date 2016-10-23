@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Filters {
+@objc class Filters: NSObject {
     enum eDistance {
         case Auto
         case Point3
@@ -25,8 +25,10 @@ class Filters {
     
     enum eCategory {
         case Japanese
-        case Ramen
-        case American
+        case Korean
+        case Seafood
+        case NewAmerican
+        //["name" : "American, New", "code": "newamerican"],
     }
 
     

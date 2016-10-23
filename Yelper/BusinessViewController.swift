@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
     
     @IBOutlet weak var businessTableView: UITableView!
     
@@ -107,6 +107,19 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        
+        let filterViewController = navigationController.topViewController as! FiltersViewController
+        filterViewController.delegate = self
+    }
+    
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: Filters) {
+        print("filtered!")
+        
+        //Business.searchWithTerm(term: <#T##String#>, sort: <#T##YelpSortMode?#>, categories: <#T##[String]?#>, deals: <#T##Bool?#>, completion: //<#T##([Business]?, Error?) -> Void#>)
     }
 
 
