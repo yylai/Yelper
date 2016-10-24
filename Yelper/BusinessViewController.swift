@@ -67,6 +67,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         self.searchBar = UISearchBar()
         self.searchBar.sizeToFit()
         self.searchBar.delegate = self
+        self.searchBar.placeholder = "e.g. tacos, delivery, Max's"
         
         navigationItem.titleView = searchBar
     }
