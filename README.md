@@ -21,8 +21,8 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Search results page
-   - [ ] Infinite scroll for restaurant results.
+- [x] Search results page
+   - [x] Infinite scroll for restaurant results.
    - [ ] Implement map view of restaurant results.
 - [ ] Filter page
    - [ ] Implement a custom switch instead of the default UISwitch.
@@ -34,6 +34,7 @@ The following **additional** features are implemented:
 
 - [x] Filter page is also designed with auto-layout + dynamic row heights.
 - [x] Display loading indicator for network activity
+- [x] Infinite Scroll maintains filter state
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -43,8 +44,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
+### Required + Additional
 <img src='https://github.com/yylai/Yelper/blob/master/yelper-walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+### Infinite Scroll + Filter
+<img src='https://github.com/yylai/Yelper/blob/master/yelper-infinite.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
