@@ -16,30 +16,17 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     var businesses: [Business]!
     
     var searchBar: UISearchBar!
+    
+    var currentFilters: Filters =  Filters(hasDeal: false, distance: Filters.eDistance.Auto, sortBy: Filters.eSortBy.BestMatch, categories: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        Business.searchWithTerm(term: "Restaurants", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            if let searchedBusinesses = businesses {
-                self.businesses = [Business]()
-                
-                for business in searchedBusinesses {
-                    print(business.name!)
-                    print(business.address!)
-                    self.businesses.append(business)
-                }
-            }
-            
-            //setupSearchBar()
-            self.businessTableView.reloadData()
-            MBProgressHUD.hide(for: self.view, animated: true)
-            }
-        )
+        //default search
+        search(term: "")
+    
+        setupSearchBar()
         
         businessTableView.dataSource = self
         businessTableView.delegate = self
@@ -48,27 +35,56 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    func search(term: String?) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let searchTerm = term ?? ""
+        Business.searchWithTerm(term: searchTerm, completion: completeSearch)
+    }
+    
+    func search(term: String?, withFilter filters: Filters?) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let searchTerm = term ?? ""
+
+        Business.searchWithTerm(term: searchTerm, filter: filters!, completion: completeSearch)
+    }
+    
+    func completeSearch(businesses: [Business]?, error: Error?) {
+        if let searchedBusinesses = businesses {
+            self.businesses = [Business]()
+            
+            for business in searchedBusinesses {
+                self.businesses.append(business)
+            }
+        }
+        
+        self.businessTableView.reloadData()
+        MBProgressHUD.hide(for: self.view, animated: true)
+    }
+    
     func setupSearchBar() {
         self.searchBar = UISearchBar()
         self.searchBar.sizeToFit()
         self.searchBar.delegate = self
         
         navigationItem.titleView = searchBar
-        
-    }
-    
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
     }
     
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
+        search(term: searchBar.text)
+        searchBar.endEditing(true)
     }
     
     public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
+        searchBar.setShowsCancelButton(false, animated: true)
+        // Remove focus from the search bar.
+        searchBar.endEditing(true)
     }
     
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
     }
     
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -108,23 +124,9 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: Filters) {
         
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        Business.searchWithTerm(term: "Restaurants", filter: filters) { (businesses: [Business]?, error: Error?) in
-                        if let searchedBusinesses = businesses {
-                            self.businesses = [Business]()
-            
-                            for business in searchedBusinesses {
-                                print(business.name!)
-                                print(business.address!)
-                                self.businesses.append(business)
-                            }
-                        }
-            
-                        //setupSearchBar()
-                        self.businessTableView.reloadData()
-                        MBProgressHUD.hide(for: self.view, animated: true)
-            
-        }
+        let term = searchBar.text ?? ""
+        
+        search(term: term, withFilter: filters)
     }
 
 

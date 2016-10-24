@@ -72,7 +72,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             return key
         }
         
-        let filterState = Filters(hasDeal: false, distance: distance, sortBy: sortedBy, categories: categories)
+        let filterState = Filters(hasDeal: hasDealState, distance: distance, sortBy: sortedBy, categories: categories)
         
         
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filterState)
@@ -97,8 +97,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         filterTableView.reloadData()
-        
-        //print("switch cell click section \(path.section) row \(path.row)")
     }
     
     func setDistanceState(distance: Filters.eDistance, newValue: Bool) {
