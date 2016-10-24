@@ -158,7 +158,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func setFilterValue(cell: SwitchCell, section: Int, row: Int) {
         switch section {
         case 0:
-            //setHasDealState(newValue: isOn)
             cell.filterSwitch.isOn = hasDealState
         case 1:
             cell.filterSwitch.isOn = distanceState[distanceLookup[row]]!

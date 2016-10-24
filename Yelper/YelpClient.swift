@@ -43,53 +43,59 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func searchWithTerm(_ term: String, filter: Filters, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
+    func searchWithTerm(_ term: String, filter: Filters?, offset: Int?, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
         
         var sort: YelpSortMode?
+        var distance: Int?
+        var categories: [String]?
+        let hasDeal: Bool = filter?.hasDeal ?? false
+        let searchOffset: Int = offset ?? 0
         
-        if let sortBy = filter.sortBy {
-            switch sortBy {
-            case .BestMatch:
-                sort = YelpSortMode.bestMatched
-            case .Distance:
-                sort = YelpSortMode.distance
-            case .HighestRated:
-                sort = YelpSortMode.highestRated
+        if let f = filter {
+            if let sortBy = f.sortBy {
+                switch sortBy {
+                case .BestMatch:
+                    sort = YelpSortMode.bestMatched
+                case .Distance:
+                    sort = YelpSortMode.distance
+                case .HighestRated:
+                    sort = YelpSortMode.highestRated
+                    
+                }
+            }
+            
+            
+            
+            if let distanceEnum = f.distance {
+                distance = distanceEnum.rawValue
+                
+                //reset to nil since 0 represents AUTO
+                if distance == 0 {
+                    distance = nil
+                }
                 
             }
-        }
-        
-        var distance: Int?
-        
-        if let distanceEnum = filter.distance {
-            distance = distanceEnum.rawValue
             
-            //reset to nil since 0 represents AUTO
-            if distance == 0 {
-                distance = nil
+            
+            if let categoryEnums = f.categories {
+                
+                categories = categoryEnums.map {
+                    (e) -> String in
+                    return e.rawValue
+                }
+                
             }
             
         }
         
-        var categories: [String]?
-        
-        if let categoryEnums = filter.categories {
-            
-            categories = categoryEnums.map {
-                (e) -> String in
-               return e.rawValue
-            }
-        
-        }
-        
-        return searchWithTerm(term, sort: sort, categories: categories, deals: filter.hasDeal, distance: distance, completion: completion)
+        return searchWithTerm(term, sort: sort, categories: categories, deals: hasDeal, distance: distance, offset: searchOffset, completion: completion)
     }
     
     func searchWithTerm(_ term: String, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
-        return searchWithTerm(term, sort: nil, categories: nil, deals: nil, distance: nil, completion: completion)
+        return searchWithTerm(term, sort: nil, categories: nil, deals: nil, distance: nil, offset: 0, completion: completion)
     }
     
-    func searchWithTerm(_ term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, distance: Int?, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
+    func searchWithTerm(_ term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, distance: Int?, offset: Int?, completion: @escaping ([Business]?, Error?) -> Void) -> AFHTTPRequestOperation {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         
         // Default the location to San Francisco
@@ -110,6 +116,11 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         if distance != nil {
             parameters["radius_filter"] = distance! as AnyObject?
         }
+        
+        if offset != nil {
+            parameters["offset"] = offset! as AnyObject?
+        }
+        
         
         print(parameters)
         

@@ -10,6 +10,7 @@
 		A30650AB1DB9E0810017F88E /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30650AA1DB9E0810017F88E /* BusinessCell.swift */; };
 		A30A568B1DBBF2AF00171715 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30A568A1DBBF2AF00171715 /* SwitchCell.swift */; };
 		A30A568D1DBBF2E500171715 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30A568C1DBBF2E500171715 /* FiltersViewController.swift */; };
+		A30B62341DBDE39400EA0347 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B62331DBDE39400EA0347 /* InfiniteScrollActivityView.swift */; };
 		A31F10901DB8A547007E833F /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31F108F1DB8A547007E833F /* YelpClient.swift */; };
 		A31F10921DB8A577007E833F /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31F10911DB8A577007E833F /* Business.swift */; };
 		A371F8EF1DB8A38100EE31D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A371F8EE1DB8A38100EE31D6 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		A30650AA1DB9E0810017F88E /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		A30A568A1DBBF2AF00171715 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		A30A568C1DBBF2E500171715 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		A30B62331DBDE39400EA0347 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		A31F108F1DB8A547007E833F /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		A31F10911DB8A577007E833F /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		A371F8EB1DB8A38100EE31D6 /* Yelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 			children = (
 				A30650AA1DB9E0810017F88E /* BusinessCell.swift */,
 				A30A568A1DBBF2AF00171715 /* SwitchCell.swift */,
+				A30B62331DBDE39400EA0347 /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30B62341DBDE39400EA0347 /* InfiniteScrollActivityView.swift in Sources */,
 				A30650AB1DB9E0810017F88E /* BusinessCell.swift in Sources */,
 				A3EE9CB81DBC903C00FB8203 /* Filters.swift in Sources */,
 				A371F8F11DB8A38100EE31D6 /* BusinessViewController.swift in Sources */,

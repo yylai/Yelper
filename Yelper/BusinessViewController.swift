@@ -9,15 +9,15 @@
 import UIKit
 import MBProgressHUD
 
-class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
+class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var businessTableView: UITableView!
     
-    var businesses: [Business]!
-    
     var searchBar: UISearchBar!
-    
-    var currentFilters: Filters =  Filters(hasDeal: false, distance: Filters.eDistance.Auto, sortBy: Filters.eSortBy.BestMatch, categories: nil)
+    var businesses: [Business]!
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
+    var currentFilters: Filters?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,19 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         search(term: "")
     
         setupSearchBar()
+        
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: businessTableView.contentSize.height, width: businessTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        businessTableView.addSubview(loadingMoreView!)
+        
+        var insets = businessTableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        businessTableView.contentInset = insets
+        
+        self.businessTableView.delegate = self
+        
         
         businessTableView.dataSource = self
         businessTableView.delegate = self
@@ -50,15 +63,30 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         Business.searchWithTerm(term: searchTerm, filter: filters!, completion: completeSearch)
     }
     
+    func loadMore(term: String?, withFilter filters: Filters?, offset: Int) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let searchTerm = term ?? ""
+        
+        Business.loadMoreWithTerm(term: searchTerm, filter: filters, offset: offset, completion: completeSearch)
+    }
+    
     func completeSearch(businesses: [Business]?, error: Error?) {
         if let searchedBusinesses = businesses {
-            self.businesses = [Business]()
+            
+            if !isMoreDataLoading {
+                self.businesses = [Business]()
+            }
             
             for business in searchedBusinesses {
                 self.businesses.append(business)
             }
         }
         
+        // Stop the loading indicator
+        self.loadingMoreView!.stopAnimating()
+        
+        isMoreDataLoading = false
         self.businessTableView.reloadData()
         MBProgressHUD.hide(for: self.view, animated: true)
     }
@@ -127,9 +155,36 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let term = searchBar.text ?? ""
         
+        currentFilters = filters
         search(term: term, withFilter: filters)
     }
-
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = businessTableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - businessTableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && businessTableView.isDragging) {
+                isMoreDataLoading = true
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y: businessTableView.contentSize.height, width: businessTableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                 let term = searchBar.text ?? ""
+                
+                loadMore(term: term, withFilter: currentFilters, offset: businesses.count)
+                
+                // ... Code to load more results ...
+            }
+            
+            
+        }
+    }
 
 }
 
