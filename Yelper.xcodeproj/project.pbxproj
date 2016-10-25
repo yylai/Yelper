@@ -19,6 +19,7 @@
 		A371F8F61DB8A38100EE31D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A371F8F51DB8A38100EE31D6 /* Assets.xcassets */; };
 		A371F8F91DB8A38100EE31D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A371F8F71DB8A38100EE31D6 /* LaunchScreen.storyboard */; };
 		A3EE9CB81DBC903C00FB8203 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EE9CB71DBC903C00FB8203 /* Filters.swift */; };
+		A3FB0C1E1DBF280700DE8DE8 /* ExpandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB0C1D1DBF280700DE8DE8 /* ExpandCell.swift */; };
 		C1B164AF011BFF752ECE115D /* Pods_Yelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1646AE18C3A802D8A3DE653 /* Pods_Yelper.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		A371F8F81DB8A38100EE31D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A371F8FA1DB8A38100EE31D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3EE9CB71DBC903C00FB8203 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		A3FB0C1D1DBF280700DE8DE8 /* ExpandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandCell.swift; sourceTree = "<group>"; };
 		D1646AE18C3A802D8A3DE653 /* Pods_Yelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				A30650AA1DB9E0810017F88E /* BusinessCell.swift */,
 				A30A568A1DBBF2AF00171715 /* SwitchCell.swift */,
 				A30B62331DBDE39400EA0347 /* InfiniteScrollActivityView.swift */,
+				A3FB0C1D1DBF280700DE8DE8 /* ExpandCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				A30A568D1DBBF2E500171715 /* FiltersViewController.swift in Sources */,
 				A31F10921DB8A577007E833F /* Business.swift in Sources */,
 				A31F10901DB8A547007E833F /* YelpClient.swift in Sources */,
+				A3FB0C1E1DBF280700DE8DE8 /* ExpandCell.swift in Sources */,
 				A371F8EF1DB8A38100EE31D6 /* AppDelegate.swift in Sources */,
 				A30A568B1DBBF2AF00171715 /* SwitchCell.swift in Sources */,
 			);

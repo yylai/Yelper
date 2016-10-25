@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="343" height="151"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gw-cQ-lEp" id="v2A-l4-dEh">
-                                            <frame key="frameInset" width="343" height="150"/>
+                                            <frame key="frameInset" width="343" height="151"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9AI-RC-htW">
@@ -180,6 +180,40 @@
                                         <connections>
                                             <outlet property="filterLabel" destination="vhm-7I-L2c" id="lkU-5K-Xe9"/>
                                             <outlet property="filterSwitch" destination="J0x-3W-NBE" id="Tkd-ji-sOp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpandCell" id="EqE-1D-O3D" customClass="ExpandCell" customModule="Yelper" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="211" width="375" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EqE-1D-O3D" id="yVc-Pc-2V1">
+                                            <frame key="frameInset" width="375" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSC-2y-JQz">
+                                                    <state key="normal" title="Selected Filter"/>
+                                                    <connections>
+                                                        <action selector="onExpand:" destination="EqE-1D-O3D" eventType="touchUpInside" id="Mcd-CF-ILh"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-Mb-Eai">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eSC-2y-JQz" secondAttribute="trailing" id="0MS-nG-Gjc"/>
+                                                <constraint firstItem="Xtl-Mb-Eai" firstAttribute="centerY" secondItem="yVc-Pc-2V1" secondAttribute="centerY" id="Kte-Bb-Y0K"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xtl-Mb-Eai" secondAttribute="bottom" constant="12" id="bVY-Pc-pJS"/>
+                                                <constraint firstItem="Xtl-Mb-Eai" firstAttribute="leading" secondItem="yVc-Pc-2V1" secondAttribute="leadingMargin" constant="19" id="jG1-OM-8Hs"/>
+                                                <constraint firstItem="eSC-2y-JQz" firstAttribute="top" secondItem="yVc-Pc-2V1" secondAttribute="top" id="kA5-TO-A8h"/>
+                                                <constraint firstAttribute="bottom" secondItem="eSC-2y-JQz" secondAttribute="bottom" id="q0z-dw-qed"/>
+                                                <constraint firstItem="eSC-2y-JQz" firstAttribute="leading" secondItem="yVc-Pc-2V1" secondAttribute="leading" id="tad-JF-ZWE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="expandButton" destination="eSC-2y-JQz" id="eOD-Ek-lwe"/>
+                                            <outlet property="expandLabel" destination="Xtl-Mb-Eai" id="AW5-hQ-szR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
