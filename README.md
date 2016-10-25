@@ -2,7 +2,7 @@
 
 **Yelper** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **14** hours spent in total
+Time spent: **16** hours spent in total
 
 ## User Stories
 
@@ -24,9 +24,9 @@ The following **optional** features are implemented:
 - [x] Search results page
    - [x] Infinite scroll for restaurant results.
    - [ ] Implement map view of restaurant results.
-- [ ] Filter page
+- [x] Filter page
    - [ ] Implement a custom switch instead of the default UISwitch.
-   - [ ] Distance filter should expand as in the real Yelp app
+   - [x] Distance filter should expand as in the real Yelp app
    - [ ] Categories should show a subset of the full list with a "See All" row to expand. Category list is [here](http://www.yelp.com/developers/documentation/category_list).
 - [ ] Implement the restaurant detail page.
 
@@ -35,20 +35,20 @@ The following **additional** features are implemented:
 - [x] Filter page is also designed with auto-layout + dynamic row heights.
 - [x] Display loading indicator for network activity
 - [x] Infinite Scroll maintains filter state
+- [x] Sorted By filter also expands as in real Yelp app
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. What are the best practices for handling form input? There seems to be so much boiler plate code
 2. How did you implement a "radio button list" and "toggle" control?
+3. How to implement custom controls?
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-### Required + Additional
+### Required + Optional + Additional
 <img src='https://github.com/yylai/Yelper/blob/master/yelper-walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-### Infinite Scroll + Filter
-<img src='https://github.com/yylai/Yelper/blob/master/yelper-infinite.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
